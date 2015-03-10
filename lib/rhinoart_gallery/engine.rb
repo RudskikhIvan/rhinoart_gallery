@@ -14,7 +14,10 @@ module RhinoartGallery
   class Engine < ::Rails::Engine
     isolate_namespace RhinoartGallery
 
-    initializer "rhinoart_gallery.add_menu_item" do |app|
+    initializer "rhinoart_gallery.init" do |app|
+
+      Rhinoart::User::ADMIN_PANEL_ROLE_GALLERY_MANAGER = "Gallery Manager"
+      Rhinoart::User::ADMIN_PANEL_ROLES << Rhinoart::User::ADMIN_PANEL_ROLE_GALLERY_MANAGER
 
       Rhinoart::Menu::ContentMenu.add_item({
         icon: 'fa-icon-picture',

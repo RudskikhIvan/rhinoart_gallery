@@ -6,7 +6,7 @@
   #uploader
   .form-actions
     .btn-overlay
-      %a.btn.btn-primary(href=galleries_path)= t(:_BACK)
+      %a.btn.btn-primary(href="#{gallery_path(@gallery)}")= t(:_BACK)
 
 :javascript
   window.gallery_images_path = '#{gallery_images_path(@gallery)}';

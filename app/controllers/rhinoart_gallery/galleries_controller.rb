@@ -1,6 +1,7 @@
 require_dependency "rhinoart_gallery/application_controller"
 module RhinoartGallery
   class GalleriesController < ApplicationController
+    before_action { authorize!(:manage, RhinoartGallery::Gallery) }
     before_action :set_gallery, only: [:show, :edit, :update, :destroy, :load_images, :move_up, :move_down]
 
     # GET /galleries
