@@ -1,4 +1,4 @@
-RhinoartGallery::Engine.routes.draw do
+Rhinogallery::Engine.routes.draw do
 
   scope "(:locale)", locale: /ru|en/ do
 

@@ -1,0 +1,40 @@
+= form_for @gallery, :html => {:class => 'form-horizontal'} do |f|
+  = render 'rhinoart/shared/error_messages', object: f.object
+  = hidden_field_tag :redirect_to, params[:redirect_to] if params[:redirect_to].present?
+
+  .control-group
+    = f.label :name, t('rhinogallery._GALLERY_NAME'), class: 'control-label'
+    .controls
+      = f.text_field :name, required: true
+
+  .control-group
+    = f.label :slug, t('rhinogallery._GALLERY_SLUG'), class: 'control-label'
+    .controls
+      = f.text_field :slug, required: true
+
+  .control-group
+    = f.label :image, t('rhinogallery._GALLERY_IMAGE'), class: 'control-label'
+    .controls
+      = f.file_field :image
+      = f.hidden_field :image_cache
+      %div
+        = image_tag @gallery.image.thumb.url
+
+  .control-group
+    = f.label :description, t('rhinogallery._GALLERY_DESCRIPTION'), class: 'control-label'
+    .controls
+      = f.text_area :description
+
+  .control-group
+    = f.label :position, t('rhinogallery._GALLERY_POSITION'), class: 'control-label'
+    .controls
+      = f.number_field :position
+
+  .control-group
+    = f.label :active, t('rhinogallery._GALLERY_ACTIVE'), class: 'control-label'
+    .controls
+      = f.check_box :active
+
+  .form-actions
+    = f.submit t(:_BTN_SAVE), class: 'btn btn-primary', data: { disable_with: t(:_SAVING) }
+    %a.btn.btn-success(href="#{rhinogallery.galleries_path}")=t(:_BACK)

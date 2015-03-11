@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
 
-  mount RhinoartGallery::Engine => "/rhinoart_gallery"
+  mount Rhinogallery::Engine => "/rhinogallery"
 end

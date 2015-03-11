@@ -1,6 +1,6 @@
 class CreateRhinoartGalleryImages < ActiveRecord::Migration
   def change
-    create_table :rhinoart_gallery_images, :force => true do |t|
+    create_table :rhinogallery_images, :force => true do |t|
       t.string :name, null: false
       t.text :description
       t.string :image, null: false

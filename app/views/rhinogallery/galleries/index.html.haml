@@ -1,0 +1,43 @@
+- provide(:title, t('rhinogallery._GALLERIES') )
+
+.box-header{"data-original-title" => ""}
+  %h2
+    %i.halflings-icon.align-justify
+    %span.break
+    = t('rhinogallery._GALLERIES')
+.box-content
+  #DataTables_Table_0_wrapper.dataTables_wrapper{:role => "grid"}
+    .row-fluid
+      .btn-overlay
+        %a.btn.btn-primary(href=new_gallery_path)
+          %i.halflings-icon.plus
+          =t(:_BTN_CREATE)
+    %table.table.table-striped
+      %thead
+        %tr
+          %th
+          %th=t('rhinogallery._GALLERY_NAME')
+          %th=t('rhinogallery._GALLERY_SLUG')
+          %th=t('rhinogallery._GALLERY_IMAGES_COUNT')
+          %th=t(:_ACTIONS)
+      %tbody
+        - @galleries.each do |gallery|
+          %tr
+            %td
+              - if !gallery.last?
+                %a.icon-arrow-down(href="#{move_down_gallery_path(gallery)}")
+              - if !gallery.first?
+                %a.icon-arrow-up(href="#{move_up_gallery_path(gallery)}")
+            %td
+              %span= link_to gallery.name, gallery
+            %td=gallery.slug
+            %td=gallery.images.size
+            %td
+              .btn-group
+                %a.btn.dropdown-toggle.btn-mini{"data-toggle" => "dropdown", :href => "#"}
+                  = t :_ACTIONS
+                  %span.caret
+                %ul.dropdown-menu
+                  %li= link_to(t(:_BTN_DELETE), gallery, {:method => :delete, 'data-confirm' => 'Are you sure?'})
+                  %li= link_to(t(:_BTN_EDIT), edit_gallery_path(gallery))
+                  %li= link_to(t(:_BTN_ADD_IMAGES), load_images_gallery_path(gallery))

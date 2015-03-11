@@ -1,0 +1,46 @@
+= form_for(@image, url: gallery_image_path(@image.gallery, @image)) do |f|
+  .form-horizontal
+    = render 'rhinoart/shared/error_messages', object: f.object
+    = hidden_field_tag :redirect_to, params[:redirect_to] if params[:redirect_to].present?
+
+    .control-group
+      = f.label :name, t('rhinogallery._IMAGE_NAME'), class: 'control-label'
+      .controls
+        = f.text_field :name, required: true
+
+    .control-group
+      = f.label :alt, t('rhinogallery._IMAGE_ALT'), class: 'control-label'
+      .controls
+        = f.text_field :alt
+
+    .control-group
+      = f.label :gallery, t('rhinogallery._IMAGE_GALLERY'), class: 'control-label'
+      .controls
+        = f.collection_select :gallery_id, Rhinogallery::Gallery.all, :id, :name
+
+    .control-group
+      = f.label :image, t('rhinogallery._GALLERY_IMAGE'), class: 'control-label'
+      .controls
+        = f.file_field :image
+        = f.hidden_field :image_cache
+        %div
+          = image_tag @image.image.thumb.url
+
+    .control-group
+      = f.label :description, t('rhinogallery._IMAGE_DESCRIPTION'), class: 'control-label'
+      .controls
+        = f.text_area :description
+
+    .control-group
+      = f.label :position, t('rhinogallery._IMAGE_POSITION'), class: 'control-label'
+      .controls
+        = f.number_field :position
+
+    .control-group
+      = f.label :active, t('rhinogallery._IMAGE_ACTIVE'), class: 'control-label'
+      .controls
+        = f.check_box :active
+
+    .form-actions
+      = f.submit t(:_BTN_SAVE), class: 'btn btn-primary', data: { disable_with: t(:_SAVING) }
+      = link_to t(:_BACK), @image.gallery, :class => 'btn btn-success'
