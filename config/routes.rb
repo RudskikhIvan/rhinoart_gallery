@@ -9,6 +9,8 @@ Rhinogallery::Engine.routes.draw do
       resources :images
     end
 
+    resources :images, :only => [:destroy]
+
   end
 
 end

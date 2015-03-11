@@ -12,7 +12,7 @@ class ImagesUploader
     runtimes: 'html5,flash,silverlight,html4'
     url: '/'
 
-    max_file_size: '20mb'
+    max_file_size: '50mb'
 
     filters: [
       {

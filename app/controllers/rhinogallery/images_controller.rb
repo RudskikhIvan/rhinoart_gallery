@@ -40,8 +40,8 @@ module Rhinogallery
 
     # DELETE /images/1
     def destroy
-      @image.destroy
-      redirect_to images_url, notice: t('rhinogallery._IMAGE_SUCCESSFULLY_DELITED', name: @image.name)
+      @image = Image.find(params[:id])
+      redirect_to gallery_path(@image.gallery), notice: t('rhinogallery._IMAGE_SUCCESSFULLY_DELITED', name: @image.name)
     end
 
     private

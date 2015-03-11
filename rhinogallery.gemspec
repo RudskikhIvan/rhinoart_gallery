@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Rhinogallery::VERSION
   s.authors     = ["Rudskikh Ivan"]
   s.email       = ["shredder-rull@yandex.ru"]
-  s.homepage    = "https://github.com/shredder-rull/rhinogallery"
+  s.homepage    = "https://github.com/shredder-rull/rhinoart_gallery"
   s.summary     = "Gallery for Rhinoart CMS"
   s.description = "Gallery for Rhinoart CMS"
   s.license     = "MIT"
@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency "friendly_id", "~> 5.0.0"
   s.add_dependency "acts_as_list"
   s.add_dependency "paper_trail"
+  s.add_dependency "compass"
 
   s.add_development_dependency "sqlite3"
 end

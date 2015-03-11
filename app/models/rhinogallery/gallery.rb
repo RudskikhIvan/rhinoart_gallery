@@ -2,6 +2,8 @@ module Rhinogallery
   class Gallery < ActiveRecord::Base
     mount_uploader :image, Rhinogallery::ImageUploader
 
+    before_validation :build_slug
+
     extend FriendlyId
     friendly_id :slug, use: [:slugged, :finders]
 
@@ -15,6 +17,10 @@ module Rhinogallery
     validates :name, :length => { :in => 2..150 }
     validates :slug, :length => { :in => 2..150 }, :uniqueness => true
     validates :image, :presence => true
+
+    def build_slug
+      self.slug = name.strip.gsub(/\s+/, '_').downcase if slug.blank?
+    end
 
   end
 end

@@ -14,5 +14,20 @@ module Rhinogallery
   class Engine < ::Rails::Engine
     isolate_namespace Rhinogallery
 
+    initializer 'rhinogallery.initializer' do
+
+      Rhinoart::User.add_admin_role "Gallery Manager"
+
+      Rhinoart::Menu::ContentMenu.add_item({
+          icon: 'fa-icon-picture',
+          link: proc{ rhinogallery.galleries_path },
+          label: 'rhinogallery._GALLERY',
+          notification: ->{ Rhinogallery::Gallery.count }
+      })
+
+      ::Ability.send(:include, Rhinogallery::Ability)
+
+    end
+
   end
 end

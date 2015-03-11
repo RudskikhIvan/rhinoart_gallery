@@ -10,18 +10,6 @@ module Rhinogallery
         jquery.ui.plupload/plupload.png
         jquery.ui.plupload/loading.gif
       )
-
-      Rhinoart::User.add_admin_role "Gallery Manager"
-
-      Rhinoart::Menu::ContentMenu.add_item({
-          icon: 'fa-icon-picture',
-          link: proc{ rhinoart_gallery.galleries_path },
-          label: 'rhinogallery._GALLERY',
-          notification: ->{ Rhinogallery::Gallery.count }
-        })
-
-      ::Ability.send(:include, Rhinogallery::Ability)
-
     end
 
   end

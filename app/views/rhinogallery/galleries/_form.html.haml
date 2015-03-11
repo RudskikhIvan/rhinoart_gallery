@@ -10,7 +10,7 @@
   .control-group
     = f.label :slug, t('rhinogallery._GALLERY_SLUG'), class: 'control-label'
     .controls
-      = f.text_field :slug, required: true
+      = f.text_field :slug
 
   .control-group
     = f.label :image, t('rhinogallery._GALLERY_IMAGE'), class: 'control-label'
@@ -18,12 +18,12 @@
       = f.file_field :image
       = f.hidden_field :image_cache
       %div
-        = image_tag @gallery.image.thumb.url
+        = image_tag @gallery.image.thumb.url if @gallery.image.present?
 
   .control-group
     = f.label :description, t('rhinogallery._GALLERY_DESCRIPTION'), class: 'control-label'
     .controls
-      = f.text_area :description
+      = f.text_area :description, rows: '10', style: "width: 700px"
 
   .control-group
     = f.label :position, t('rhinogallery._GALLERY_POSITION'), class: 'control-label'
