@@ -9,6 +9,10 @@ module Rhinogallery
         rhinogallery/*.css
         jquery.ui.plupload/plupload.png
         jquery.ui.plupload/loading.gif
+        lightbox.js
+        lightbox.scss
+        lightbox/*.png
+        lightbox/*.gif
       )
     end
 

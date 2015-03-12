@@ -1,4 +1,6 @@
 - provide(:title, "#{t('rhinogallery._GALLERY')}: #{@gallery.name}" )
+- append_javascript 'lightbox'
+- append_stylesheet 'lightbox'
 
 .span8.offset1
   .row.show-grid.offset-bottom1
@@ -16,10 +18,10 @@
       %strong Images:
   .row.show-grid.offset-bottom1.thumbnails
     %div
-    - @gallery.images.each do |image|
+    - @gallery.images.each_with_index do |image, i|
       .span3.text-center.offset-bottom1
         .thumbnail
-          %a.image(href="#{image.image.large.url}" data-lightbox="#{image.name}")
+          %a.image(href="#{image.image.large.url}" data-lightbox="image-#{i}")
             = image_tag image.image.thumb.url
           .caption
             %h3=image.name

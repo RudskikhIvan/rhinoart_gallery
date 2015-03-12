@@ -29,7 +29,6 @@ Gem::Specification.new do |s|
   s.add_dependency "friendly_id", "~> 5.0.0"
   s.add_dependency "acts_as_list"
   s.add_dependency "paper_trail"
-  s.add_dependency "compass"
 
   s.add_development_dependency "sqlite3"
 end
