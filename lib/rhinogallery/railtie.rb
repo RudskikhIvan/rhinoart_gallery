@@ -10,7 +10,7 @@ module Rhinogallery
         jquery.ui.plupload/plupload.png
         jquery.ui.plupload/loading.gif
         lightbox.js
-        lightbox.scss
+        lightbox.css
         lightbox/*.png
         lightbox/*.gif
       )

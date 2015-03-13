@@ -2,7 +2,7 @@ require_dependency "rhinogallery/application_controller"
 module Rhinogallery
   class ImagesController < ApplicationController
     before_action { authorize!(:manage, Rhinogallery::Image) }
-    before_action :set_image, only: [:show, :edit, :update, :destroy]
+    before_action :set_image, only: [:show, :edit, :update]
 
     # GET /images
     def index
@@ -41,6 +41,7 @@ module Rhinogallery
     # DELETE /images/1
     def destroy
       @image = Image.find(params[:id])
+      @image.destroy
       redirect_to gallery_path(@image.gallery), notice: t('rhinogallery._IMAGE_SUCCESSFULLY_DELITED', name: @image.name)
     end
 

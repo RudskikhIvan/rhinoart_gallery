@@ -13,11 +13,11 @@ module Rhinogallery
     end
 
     version :large do
-      process :resize_to_fill => [800,800]
+      process :resize_to_fill => Rhinogallery.image_large_size
     end
 
     version :thumb do
-      process :resize_to_fill => [160,160]
+      process :resize_to_fill => Rhinogallery.image_thumb_size
     end
 
     def extension_white_list

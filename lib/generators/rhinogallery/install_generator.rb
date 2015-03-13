@@ -9,6 +9,7 @@ module Rhinogallery
       copy_file "controllers/galleries_controller.rb", "app/controllers/galleries_controller.rb"
       copy_file "views/index.html.haml", "app/views/galleries/index.html.haml"
       copy_file "views/show.html.haml", "app/views/galleries/show.html.haml"
+      copy_file "config/rhinogallery.rb", "config/initializers/rhinogallery.rb"
     end
 
     def install_migrations
