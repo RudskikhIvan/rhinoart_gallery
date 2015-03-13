@@ -53,7 +53,7 @@ module Rhinogallery
 
       # Only allow a trusted parameter "white list" through.
       def image_params
-        params.fetch(:image).permit(:name, :alt, :description, :active)
+        params.fetch(:image).permit(*Image::UPDATE_AVAILABLE_ATTRIBUTES)
       end
   end
 end

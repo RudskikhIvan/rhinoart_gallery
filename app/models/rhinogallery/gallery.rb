@@ -10,7 +10,8 @@ module Rhinogallery
     acts_as_list
     has_paper_trail
 
-    default_scope { order 'position' }
+    default_scope { order('position') }
+    scope :active, ->{ where(active: true ) }
 
     has_many :images, class_name: 'Rhinogallery::Image', dependent: :destroy
 
