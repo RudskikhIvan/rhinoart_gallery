@@ -11,8 +11,8 @@ module Rhinogallery
     yield self
   end
 
-  add_config_param(:image_large_size, [800,800])
-  add_config_param(:image_thumb_size, [160,160])
+  add_config_param :image_large_process, {:resize_to_fill => [800,800]}
+  add_config_param :image_thumb_process, {:resize_to_fill => [160,160]}
 
 end
 

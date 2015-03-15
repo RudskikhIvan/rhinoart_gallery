@@ -2,7 +2,7 @@
 - append_javascript 'lightbox'
 - append_stylesheet 'lightbox'
 
-.span8
+.span12
   .row-fluid.show-grid.offset-bottom1
     .span3
       = image_tag @gallery.image.thumb.url
@@ -16,15 +16,16 @@
   .row-fluid.show-grid
     .span2
       %strong Images:
-  .row.show-grid.offset-bottom1
+  .row-fluid.show-grid.offset-bottom1
     .thumbnails
-      %div
-      - @gallery.images.each_with_index do |image, i|
-        .span3.text-center.offset-bottom1
-          .thumbnail
-            %a.image(href="#{image.image.large.url}" data-lightbox="image-#{i}")
-              = image_tag image.image.thumb.url
-            .caption
-              %h3=image.name
-              = link_to t(:_BTN_DELETE), image, {:method => :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-warning'}
-              = link_to t(:_BTN_EDIT), edit_gallery_image_path(@gallery, image), :class => 'btn btn-primary'
+      - @gallery.images.in_groups_of(4, false) do |grp|
+        .row-fluid
+          - grp.each_with_index do |image, i|
+            .span3.text-center.offset-bottom1
+              .thumbnail
+                %a.image(href="#{image.image.large.url}" data-lightbox="image-#{image.id}")
+                  = image_tag image.image.thumb.url
+                .caption
+                  %h3=image.name
+                  = link_to t(:_BTN_DELETE), image, {:method => :delete, 'data-confirm' => 'Are you sure?', :class => 'btn btn-warning'}
+                  = link_to t(:_BTN_EDIT), edit_gallery_image_path(@gallery, image), :class => 'btn btn-primary'
